@@ -11,7 +11,7 @@ echo "$PWD"
 
 ls -lt $HOME
 
-cat $HOME/hello.txt
+cat $HOME/src/hello.txt
 
 echo "Hello from inside container" > $HOME/src/container.txt
 
