@@ -4,7 +4,8 @@ language: none
 
 build:
   pre_ci_boot:
-    options: "-v $SHIPPABLE_BUILD_DIR:$SHIPPABLE_BUILD_DIR"
+    # options: "-v $SHIPPABLE_BUILD_DIR:$SHIPPABLE_BUILD_DIR"
+    options: "--privileged=true --net=bridge -v $SHIPPABLE_GOPATH:SHIPPABLE_GOPATH"
   
   ci:
     # Dockerfile is present in the root of the repository.
@@ -13,6 +14,7 @@ build:
     - docker build -t cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER .
     - echo $PWD
     - echo "SHIPPABLE_BUILD_DIR = $SHIPPABLE_BUILD_DIR"
+    - echo "SHIPPABLE_GOPATH = $SHIPPABLE_GOPATH"
     - ls -lt
     # After the image is built, we run the image to test if it prints Hello World.
     - docker run --name cloudeng-test -v $PWD:/src cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER
