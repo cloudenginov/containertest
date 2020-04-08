@@ -19,12 +19,12 @@ build:
     - echo "HOME = $HOME"
     - ls -lt
     # After the image is built, we run the image to test if it prints Hello World.
-    - docker rm cloudeng-test
     - docker run --name cloudeng-test -v $HOME:$HOME/src cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER
     - echo 'container run complete'
     # The image can now be pushed to any supported Docker registry.
     - cat container.txt
     - echo 'ls -lt $HOME/src/proj/containertest'
     - ls -lt $HOME/src/proj/containertest
+  always:
     - docker rm cloudeng-test
     - docker rmi cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER
