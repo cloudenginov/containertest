@@ -11,7 +11,7 @@ echo "$PWD"
 
 ls -lt $HOME
 
-cat $HOME/src/hello.txt
+cat $HOME/hello.txt
 
 echo "Hello from inside container" > $HOME/src/container.txt
 
@@ -21,4 +21,4 @@ cd $HOME/src/proj
 git clone https://github.com/cloudenginov/containertest.git
 
 echo 'cont ls -lt'
-ls -lt
+ls -lt $HOME/src/proj/containertest
