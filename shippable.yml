@@ -3,6 +3,10 @@
 language: none
 
 build:
+  pre_ci_boot:
+    image_name: drydock/u14golall
+    image_tag: v6.12.4
+  
   ci:
     # Dockerfile is present in the root of the repository.
     # We use Shippable platform environment variables $BRANCH and $BUILD_NUMBER
