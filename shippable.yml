@@ -17,9 +17,10 @@ build:
     - echo "SHIPPABLE_BUILD_DIR = $SHIPPABLE_BUILD_DIR"
     - echo "SHIPPABLE_GOPATH = $SHIPPABLE_GOPATH"
     - echo "HOME = $HOME"
-    - ls -lt
+    - echo 'ls -lt $HOME'
+    - ls -lt "$HOME"
     # After the image is built, we run the image to test if it prints Hello World.
-    - docker run --name cloudeng-test -v $HOME:$HOME/src cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER
+    - docker run --name cloudeng-test -v $HOME:$HOME cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER
     - echo 'container run complete'
     # The image can now be pushed to any supported Docker registry.
     - cat container.txt
