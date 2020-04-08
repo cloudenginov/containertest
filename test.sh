@@ -2,7 +2,13 @@
 
 apk add --no-cache git
 
+echo 'echo $HOME'
 echo "$HOME"
+
+echo 'echo $PWD'
+echo "PWD"
+
+ls -lt $HOME
 
 cat $HOME/hello.txt
 
