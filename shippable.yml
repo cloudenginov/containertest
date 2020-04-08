@@ -4,8 +4,7 @@ language: none
 
 build:
   pre_ci_boot:
-    image_name: drydock/u14golall
-    image_tag: v6.12.4
+    options: "-v $SHIPPABLE_BUILD_DIR:$SHIPPABLE_BUILD_DIR"
   
   ci:
     # Dockerfile is present in the root of the repository.
@@ -13,6 +12,7 @@ build:
     # for tagging the docker image.
     - docker build -t cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER .
     - echo $PWD
+    - echo "SHIPPABLE_BUILD_DIR = $SHIPPABLE_BUILD_DIR"
     - ls -lt
     # After the image is built, we run the image to test if it prints Hello World.
     - docker run -v $PWD:/src cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER
