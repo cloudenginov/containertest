@@ -20,5 +20,7 @@ build:
     - docker run --name cloudeng-test -v $PWD:/src cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER
     # The image can now be pushed to any supported Docker registry.
     - cat container.txt
+    - echo 'ls -lt $SHIPPABLE_GOPATH/src/proj/containertest'
+    - ls -lt $SHIPPABLE_GOPATH/src/proj/containertest
     - docker rm cloudeng-test
     - docker rmi cloudeng/alpine-builder-docker:$BRANCH.$BUILD_NUMBER
